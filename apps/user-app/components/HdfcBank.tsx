@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
-import hdfc from "../assests/HDFC-Bank-Logo.png";
+import hdfc from "../assets/HDFC-Bank-Logo.png";
 import { createOnRampTransactions } from "../app/lib/actions/createOnRampTransactions";
 
 export default function HDFCTransactionPage() {

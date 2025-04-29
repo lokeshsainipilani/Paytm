@@ -2,7 +2,7 @@
 
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation";
-import { Appbar } from "@repo/ui/appbar";
+import { Appbar } from "./components/appbar";
 
 export function AppbarClient(){
     const session = useSession();
