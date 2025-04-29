@@ -1,7 +1,8 @@
 import { Card } from "@repo/ui/card"
 
 export const OnRampTransactions = ({
-    transactions
+    transactions,
+    title = "Recent Transactions"
 }: {
     transactions: {
         time: Date,
@@ -10,6 +11,7 @@ export const OnRampTransactions = ({
         status: string,
         provider: string
     }[]
+    title?:string;
 }) => {
     if (!transactions.length) {
         return <Card title="Recent Transactions">

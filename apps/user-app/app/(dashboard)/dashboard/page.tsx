@@ -1,63 +1,175 @@
-// export default function(){
-//     return <div>
-//         Dashboard page
-//     </div>
-// }
-// app/page.tsx
-export default function() {
-    return (
-      <main className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
-  
-        {/* Navbar */}
-        <header className="flex items-center justify-between p-6">
-          <h1 className="text-2xl font-bold text-blue-800">PaySwift</h1>
-          <nav className="space-x-6">
-            <a href="#features" className="text-blue-700 hover:underline">Features</a>
-            <a href="#download" className="text-blue-700 hover:underline">Get Started</a>
-          </nav>
-        </header>
-  
-        {/* Hero Section */}
-        <section className="flex flex-col items-center justify-center text-center px-6 py-24">
-          <h2 className="text-5xl font-bold text-blue-900 mb-6">Fast, Secure, and Easy Payments</h2>
-          <p className="text-lg text-blue-700 mb-8 max-w-2xl">
-            Experience seamless money transfers, transaction tracking, and peer-to-peer payments. Your wallet, redefined.
-          </p>
-          <a href="#download" className="inline-flex items-center gap-2 bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-800 transition">
-            Get Started →
-          </a>
-        </section>
-  
-        {/* Features Section */}
-        <section id="features" className="grid md:grid-cols-3 gap-8 px-10 py-20">
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Instant Transfers</h3>
-            <p className="text-blue-600">Send and receive money instantly with just a few taps.</p>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">Transaction History</h3>
-            <p className="text-blue-600">Track every payment with detailed records at your fingertips.</p>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-            <h3 className="text-xl font-semibold text-blue-800 mb-4">P2P Transfers</h3>
-            <p className="text-blue-600">Peer-to-peer payments made effortless and secure.</p>
-          </div>
-        </section>
-  
-        {/* Call to Action */}
-        <section id="download" className="flex flex-col items-center justify-center py-20 bg-blue-200">
-          <h2 className="text-4xl font-bold text-blue-900 mb-6">Ready to Make Your First Payment?</h2>
-          <a href="#" className="inline-flex items-center gap-2 border border-blue-700 text-blue-800 font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 hover:text-white transition">
-            Download the App
-          </a>
-        </section>
-  
-        {/* Footer */}
-        <footer className="text-center text-blue-700 py-6">
-          &copy; 2025 PaySwift. All rights reserved.
-        </footer>
-  
-      </main>
-    )
+import { PrismaClient } from "@repo/db/client"
+
+const prisma = new PrismaClient();
+export const metadata = {
+  title:"DashBoard | PayEase",
+  description:"DashBoard for PayEase digital wallet application",
+} 
+
+import { Wallet, TrendingUp, AlertCircle, ArrowUpRight, ArrowDownLeft, PieChart, HelpCircle
+ } from "lucide-react"
+import { getServerSession } from "next-auth"
+import { authOptions } from "../../lib/auth"
+import { desc } from "framer-motion/client";
+import { OnRampTransactions } from "../../../components/OnRampTransactions";
+
+async function getBalance(){
+  const session = await getServerSession(authOptions);
+  const balance = await prisma.balance.findFirst({
+    where:{
+      userId:Number(session?.user?.id)
+    }
+  })
+  return {
+    amount:balance?.amount || 0,
+    locked: balance?.locked || 0
   }
+}
+
+async function getOnRampTransactions(){
+  const session = await getServerSession(authOptions)
+  const txns = await prisma.onRampTransaction.findMany({
+    where:{
+      userId: Number(session?.user.id)
+    },orderBy:{
+      startTime:"desc"
+    },
+    take:5
+  });
+  return txns.map((t: any) => ({
+    time: t.startTime,
+    amount: t.amount,
+    status: t.status,
+    provider: t.provider,
+  }));
+}
+
+export default async function DashboardPage() {
+  const balance = await getBalance();
+  const transactions = await getOnRampTransactions();
+
+  return (
+    <div className="min-h-screen pt-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
+            <span className="text-blue-600">PayEase </span>Dashboard
+          </h1>
+          <p className="mt-2 text-lg sm:text-xl text-slate-800">
+            Manage your finances with ease
+          </p>
+        </div>
+
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+          <div className="p-6">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
+              <Wallet className="mr-2 h-6 w-6 text-indigo-600" />
+              Your Balance
+            </h2>
+            <div className="flex items-baseline">
+              <span className="text-4xl font-bold text-indigo-600">
+                ₹{(balance.amount / 100).toFixed(2)}
+              </span>
+              <span className="ml-2 text-sm text-gray-500">Available</span>
+            </div>
+            {balance.locked > 0 && (
+              <div className="mt-2 text-sm text-gray-500 flex items-center">
+                <AlertCircle className="mr-1 h-4 w-4 text-yellow-500" />₹
+                {(balance.locked / 100).toFixed(2)} Locked
+              </div>
+            )}
+          </div>
+          <div className="bg-indigo-50 px-6 py-4">
+            <div className="text-sm font-medium text-indigo-600 flex items-center">
+              <TrendingUp className="mr-2 h-4 w-4" />
+              Quick Tip: Regular transactions help build your financial profile.
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+          <OnRampTransactions transactions={transactions} />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                <ArrowUpRight className="mr-2 h-5 w-5 text-green-500" />
+                Quick Send
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Transfer money to your contacts instantly.
+              </p>
+              <div className="pt-1">
+                <a
+                  href="/p2p"
+                  className="bg-green-500 text-white px-3 py-3 rounded-lg hover:bg-green-600 transition-colors"
+                >
+                  Send Money
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                <ArrowDownLeft className="mr-2 h-5 w-5 text-blue-500" />
+                Add Funds
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Top up your FlowPay wallet easily.
+              </p>
+              <div className="pt-1">
+                <a
+                  href="/transfer"
+                  className="bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  Add Money
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+          <div className="p-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+              <PieChart className="mr-2 h-5 w-5 text-purple-500" />
+              Spending Insights
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Track your spending patterns and manage your budget more
+              effectively.
+            </p>
+            <a
+              href="/transactions"
+              className="text-purple-500 font-medium hover:text-purple-600 transition-colors"
+            >
+              View Detailed Analytics →
+            </a>
+          </div>
+        </div>
+
+        <div className="bg-indigo-50 rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <HelpCircle className="mr-2 h-5 w-5 text-indigo-600" />
+            Need Help?
+          </h3>
+          <p className="text-gray-600 mb-4">
+            Our support team is always ready to assist you with any questions or
+            issues.
+          </p>
+          <a
+            href="/contact"
+            className="bg-indigo-600 text-white px-4 py-3 rounded-lg mt-1 hover:bg-indigo-700 transition-colors"
+          >
+            Contact Support
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
   
