@@ -3,6 +3,7 @@
 import { PrismaClient } from "@repo/db/client";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
+import { number } from "framer-motion";
 
 const prisma = new PrismaClient();
 export async function createOnRampTransactions(amount:number, provider:string){
@@ -23,7 +24,23 @@ export async function createOnRampTransactions(amount:number, provider:string){
             token: token
 
         }
+    }),
+    prisma.balance.upsert({
+        where:{
+            userId:Number(userId)
+        },
+        update:{
+            amount:{
+                increment:amount
+            }
+        },
+        create:{
+            userId:Number(userId),
+            amount:amount,
+            locked:0
+        }
     })
+
     return {
         message:" on ramp transaction added"
     }
