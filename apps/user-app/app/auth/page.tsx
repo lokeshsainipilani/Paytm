@@ -3,7 +3,7 @@
 
 import { ArrowRight, Info, Smartphone, Lock } from "lucide-react";
 import { signIn } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { useState } from "react"
 import React from "react";
 import { toast } from "react-toastify";
