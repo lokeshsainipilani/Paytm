@@ -24,7 +24,7 @@ export default function LoginSignup(){
             phone:onlyNumber,
             password:password,
             redirect:false,
-            callbackUrl:"/dashboard"
+            
         });
         setIsLoading(false)
 
