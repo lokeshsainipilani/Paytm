@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "postinstall": "cd ../../packages/db && npx prisma generate",
     "build": "cd ../../packages/db && npx prisma generate && cd ../../apps/user-app && next build",
     "prisma:generate": "cd ../../packages/db && npx prisma generate",
     "start": "next start",
