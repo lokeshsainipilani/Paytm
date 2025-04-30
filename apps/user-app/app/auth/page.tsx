@@ -23,7 +23,8 @@ export default function LoginSignup(){
         const res = await signIn("credentials", {
             phone:phoneNumber,
             password:password,
-            redirect:false
+            redirect:false,
+            callbackUrl:"/dashboard"
         });
         setIsLoading(false)
 
