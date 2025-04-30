@@ -21,7 +21,7 @@ export default function LoginSignup(){
         setError("")
         const onlyNumber = phoneNumber.replace(/\D/g, "");
         const res = await signIn("credentials", {
-            phone:phoneNumber,
+            phone:onlyNumber,
             password:password,
             redirect:false,
             callbackUrl:"/dashboard"
