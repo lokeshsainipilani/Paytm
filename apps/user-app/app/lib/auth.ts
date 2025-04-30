@@ -1,6 +1,8 @@
 import {PrismaClient} from "@repo/db/client"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from 'bcrypt'
+import { pages } from "next/dist/build/templates/app-page";
+
 
 const db = new PrismaClient();
 
@@ -57,5 +59,9 @@ export const authOptions = {
 
             return session
         }
+    },
+    pages:{
+        signIn:"/auth"
     }
+    
 }

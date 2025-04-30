@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin,  } from "lucide-react";
 
 interface FooterProps {
   year?: number;
@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="text-md font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4 mb-4">
               <a
-                href="https://github.com/pankajkumardev"
+                href="https://github.com/lokeshsainipilani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gray-800"
@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <span className="sr-only">GitHub</span>
               </a>
               <a
-                href="https://x.com/pankajkumar_dev"
+                href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-blue-400"
@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <span className="sr-only">Twitter</span>
               </a>
               <a
-                href="https://linkedin.com/in/Pankajkumardev0"
+                href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-blue-700"

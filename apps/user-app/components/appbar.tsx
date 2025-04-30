@@ -49,8 +49,8 @@ export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
           PayEase
         </div>
       </div>
-      <div className="flex flex-col justify-center pt-2">
-        <Button onClick={user ? onSignout : onSignin}>
+      <div className="flex flex-col justify-center pt-2 bg-gray-900">
+        <Button onClick={user ? onSignout : onSignin} >
           {user ? "Logout" : "Login"}
         </Button>
       </div>
