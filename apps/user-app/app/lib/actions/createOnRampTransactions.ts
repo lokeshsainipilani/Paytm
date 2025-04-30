@@ -1,9 +1,10 @@
 "use server"
 
-import { PrismaClient } from "../../../../../packages/db/src";
+
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
 import { number } from "framer-motion";
+import { PrismaClient } from "@repo/db/client";
 
 const prisma = new PrismaClient();
 export async function createOnRampTransactions(amount:number, provider:string){

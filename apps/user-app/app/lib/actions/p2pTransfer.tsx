@@ -2,7 +2,8 @@
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth";
-import { PrismaClient } from "../../../../../packages/db/src";
+import { PrismaClient } from "@repo/db/client";
+
 
 const prisma = new PrismaClient();
 
