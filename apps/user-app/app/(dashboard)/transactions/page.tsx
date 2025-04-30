@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
-import {PrismaClient} from "@repo/db/client";
+import {PrismaClient} from "../../../../../packages/db/src";
 import { OnRampTransactions } from "../../../components/OnRampTransactions";
 import { Metadata } from 'next'
 
