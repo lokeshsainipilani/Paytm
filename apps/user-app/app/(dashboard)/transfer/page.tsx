@@ -1,4 +1,4 @@
-import {PrismaClient} from "../../../../../packages/db/src";
+import {PrismaClient} from "@repo/db/client";
 import { AddMoney } from "../../../components/AddMoneyCard";
 import { BalanceCard } from "../../../components/BalanceCard";
 import { OnRampTransactions } from "../../../components/OnRampTransactions";

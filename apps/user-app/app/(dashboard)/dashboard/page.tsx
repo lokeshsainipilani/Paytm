@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../../../../packages/db/src"
+import { PrismaClient } from "@repo/db/client"
 
 const prisma = new PrismaClient();
 export const metadata = {
