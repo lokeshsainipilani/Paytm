@@ -20,7 +20,7 @@
 // </div>
 // }
 
-import { Button } from "@repo/ui/button";
+import { Button } from "./button";
 import { useRouter } from "next/navigation";
 
 interface AppbarProps {

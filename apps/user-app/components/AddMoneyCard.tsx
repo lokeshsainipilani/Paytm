@@ -58,7 +58,7 @@ import { useState } from "react";
 import { Card } from "@repo/ui/card";
 import { TextInput } from "@repo/ui/textInput";
 import { Select } from "@repo/ui/select";
-import { Button } from "@repo/ui/button";
+import { Button } from "./button";
 import { useRouter } from "next/navigation";
 
 const SUPPORTED_BANKS = [
