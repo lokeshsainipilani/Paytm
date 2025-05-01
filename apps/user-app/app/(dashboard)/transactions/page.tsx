@@ -20,9 +20,9 @@ async function getsentP2PTranscations() {
   });
 
   return txns.map((t: any) => ({
-    time: t.timestamp,
+    time: t.timeStamp,
     amount: t.amount,
-    status: "Completed",
+    status: "success",
     provider: t.provider,
   }));
 }
@@ -36,9 +36,9 @@ async function getreceivedP2PTranscations() {
   });
 
   return txns.map((t: any) => ({
-    time: t.timestamp,
+    time: t.timeStamp,
     amount: t.amount,
-    status: "Completed",
+    status: "success",
     provider: t.provider,
   }));
 }
@@ -69,9 +69,9 @@ export default async function TransactionsPage() {
   ] = await Promise.all([
     getsentP2PTranscations(),
     getreceivedP2PTranscations(),
-    getOnRampTransactions("Completed"),
-    getOnRampTransactions("Pending"),
-    getOnRampTransactions("Failed"),
+    getOnRampTransactions("success"),
+    getOnRampTransactions("processing"),
+    getOnRampTransactions("failure"),
   ]);
 
   return (

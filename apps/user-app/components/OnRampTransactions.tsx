@@ -89,7 +89,7 @@ export const OnRampTransactions = ({
                   {isSentTransactions ? 'Sent INR' : 'Received INR'}
                 </div>
                 <div className="text-slate-600 text-xs">
-                  {t.time.toDateString()}
+                  {t.time.toLocaleDateString() }
                 </div>
               </div>
               <div className="flex flex-col items-end">
@@ -99,9 +99,9 @@ export const OnRampTransactions = ({
                     : `+ Rs ${t.amount / 100}`}
                 </div>
                 <div className="text-sm pr-1">
-                  {t.status === 'Completed' ? (
+                  {t.status === 'success' ? (
                     <span className="text-green-500">Success</span>
-                  ) : t.status === 'Pending' ? (
+                  ) : t.status === 'processing' ? (
                     <span className="text-yellow-500">Pending</span>
                   ) : (
                     <span className="text-red-500">Failed</span>
