@@ -95,8 +95,8 @@ import { SendCard } from "../../../components/SendCard";
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'P2P Transfer | Flowpay',
-  description: 'Fast and safe P2P transfers with Flowpay digital wallet application',
+  title: 'P2P Transfer | PayEase',
+  description: 'Fast and safe P2P transfers with PayEase digital wallet application',
 }
 
 export default function () {

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Flowpay",
-  description: "Terms of Service for Flowpay digital wallet application",
+  title: "Terms of Service | PayEase",
+  description: "Terms of Service for PayEase digital wallet application",
 };
 
 export default function TermsOfServicePage() {
@@ -11,10 +11,10 @@ export default function TermsOfServicePage() {
       <div className="max-w-3xl mx-auto pt-20">
         <div className="text-center mb-12">
           <div className="text-3xl sm:text-4xl font-extrabold text-blue-600">
-            FlowPay <span className="text-slate-800">Terms of Service</span>{" "}
+            PayEase <span className="text-slate-800">Terms of Service</span>{" "}
           </div>
           <div className="mt-2 text-lg sm:text-xl text-slate-800">
-            Understand the terms of using Flowpay.
+            Understand the terms of using PayEase.
           </div>
         </div>
         <div className="space-y-6 text-gray-600">
@@ -23,7 +23,7 @@ export default function TermsOfServicePage() {
               1. Acceptance of Terms
             </h2>
             <p>
-              By accessing or using the Flowpay digital wallet application, you
+              By accessing or using the PayEase digital wallet application, you
               agree to be bound by these Terms of Service and all applicable
               laws and regulations.
             </p>
@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
               2. Description of Service
             </h2>
             <p>
-              Flowpay provides a digital wallet service that allows users to
+              PayEase provides a digital wallet service that allows users to
               manage funds, track expenses, and transfer money securely.
             </p>
           </section>
@@ -44,7 +44,7 @@ export default function TermsOfServicePage() {
               3. User Accounts
             </h2>
             <p>
-              To use Flowpay, you must create an account. You are responsible
+              To use PayEase, you must create an account. You are responsible
               for maintaining the confidentiality of your account information
               and for all activities that occur under your account.
             </p>
@@ -55,7 +55,7 @@ export default function TermsOfServicePage() {
               4. User Conduct
             </h2>
             <p>
-              You agree not to use Flowpay for any unlawful purpose or in any
+              You agree not to use PayEase for any unlawful purpose or in any
               way that could damage, disable, overburden, or impair our service.
             </p>
           </section>
@@ -65,7 +65,7 @@ export default function TermsOfServicePage() {
               5. Fees and Charges
             </h2>
             <p>
-              Flowpay may charge fees for certain transactions or services.
+              PayEase may charge fees for certain transactions or services.
               These fees will be clearly communicated to you before any
               transaction is processed.
             </p>
@@ -76,7 +76,7 @@ export default function TermsOfServicePage() {
               6. Intellectual Property
             </h2>
             <p>
-              All content, features, and functionality of Flowpay are owned by
+              All content, features, and functionality of PayEase are owned by
               us and are protected by international copyright, trademark,
               patent, trade secret, and other intellectual property laws.
             </p>
@@ -87,7 +87,7 @@ export default function TermsOfServicePage() {
               7. Limitation of Liability
             </h2>
             <p>
-              Flowpay shall not be liable for any indirect, incidental, special,
+              PayEase shall not be liable for any indirect, incidental, special,
               consequential or punitive damages, including without limitation,
               loss of profits, data, use, goodwill, or other intangible losses.
             </p>
@@ -120,7 +120,7 @@ export default function TermsOfServicePage() {
             </h2>
             <p>
               If you have any questions about these Terms, please contact us at
-              terms@flowpay.com.
+              terms@PayEase.com.
             </p>
           </section>
 

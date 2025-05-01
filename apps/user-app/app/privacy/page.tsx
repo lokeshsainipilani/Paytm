@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Flowpay',
-  description: 'Privacy Policy for Flowpay digital wallet application',
+  title: 'Privacy Policy | PayEase',
+  description: 'Privacy Policy for PayEase digital wallet application',
 };
 
 export default function PrivacyPolicyPage() {
@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
       <div className="max-w-3xl mx-auto pt-20">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
-            <span className="text-blue-600">FlowPay </span>Privacy Policy
+            <span className="text-blue-600">PayEase </span>Privacy Policy
           </h1>
           <p className="mt-2 text-lg sm:text-xl text-slate-800">
             How we handle your information.
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
               1. Introduction
             </h2>
             <p>
-              Welcome to Flowpay's Privacy Policy. This policy describes how we
+              Welcome to PayEase's Privacy Policy. This policy describes how we
               collect, use, and protect your personal information when you use
               our digital wallet application.
             </p>
@@ -102,7 +102,7 @@ export default function PrivacyPolicyPage() {
             </h2>
             <p>
               If you have any questions about this privacy policy, please
-              contact us at privacy@flowpay.com.
+              contact us at privacy@PayEase.com.
             </p>
           </section>
 

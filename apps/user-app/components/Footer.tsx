@@ -9,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   year = new Date().getFullYear(),
-  email = "support@flowpay.com",
+  email = "support@PayEase.com",
 }) => {
   return (
     <footer className="bg-slate-100 text-gray-700 py-8 border-t border-slate-300">
@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="mt-8 pt-8 border-t border-slate-300 text-center text-sm text-gray-500">
-          <p>PayEase is a registered trademark of FlowPay, Inc.</p>
+          <p>PayEase is a registered trademark of PayEase, Inc.</p>
         </div>
       </div>
     </footer>

@@ -23,7 +23,7 @@ export default function ContactUsPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
-            <span className="text-blue-600">FlowPay </span>Contact Us
+            <span className="text-blue-600">PayEase </span>Contact Us
           </h1>
           <p className="mt-2 text-lg sm:text-xl text-slate-800">
             We're here to help with any questions or concerns
@@ -59,7 +59,7 @@ export default function ContactUsPage() {
                 href="mailto:support@pankajams1234@gmail.com"
                 className="text-blue-600 font-medium hover:text-blue-800"
               >
-                support@flowpay.com
+                support@PayEase.com
               </a>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function ContactUsPage() {
                 <MapPin className="mr-2 h-5 w-5 text-blue-600" />
                 Visit Us
               </h3>
-              <p className="text-gray-600 mb-2">123 FlowPay Street</p>
+              <p className="text-gray-600 mb-2">123 PayEase Street</p>
               <p className="text-gray-600">Fintech City, FP 12345</p>
             </div>
           </div>

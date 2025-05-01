@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Home | PayEase",
-  description: "Welcome to the Flowpay digital wallet application",
+  description: "Welcome to the PayEase digital wallet application",
 };
 
 export default function Home() {

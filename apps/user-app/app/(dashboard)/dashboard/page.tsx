@@ -118,7 +118,7 @@ export default async function DashboardPage() {
                 Add Funds
               </h3>
               <p className="text-gray-600 mb-4">
-                Top up your FlowPay wallet easily.
+                Top up your PayEase wallet easily.
               </p>
               <div className="pt-1">
                 <a

@@ -7,8 +7,8 @@ import { Metadata } from 'next'
 const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: 'Transactions | Flowpay',
-  description: 'Track all your transactions effortlessly with Flowpay digital wallet application',
+  title: 'Transactions | PayEase',
+  description: 'Track all your transactions effortlessly with PayEase digital wallet application',
 }
 
 async function getsentP2PTranscations() {
