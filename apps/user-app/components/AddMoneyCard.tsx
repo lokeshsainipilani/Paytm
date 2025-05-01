@@ -104,7 +104,7 @@ export const AddMoney = () => {
             value: x.name,
           }))}
         />
-        <div className="flex justify-center pt-4 bg-gray-900" >
+        <div className="flex justify-center pt-4 " >
           <Button
             onClick={async () => {
               if (provider === "HDFC Bank") {
