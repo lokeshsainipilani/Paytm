@@ -1,47 +1,45 @@
-"use client"
+"use client";
 
-
-import { ArrowRight, Info, Smartphone, Lock } from "lucide-react";
-import { signIn } from "next-auth/react";
-import {  useRouter } from "next/navigation";
-import { useState } from "react"
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { ArrowRight, Smartphone, Lock, Info } from "lucide-react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function LoginSignup(){
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [password, setPassword] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
-    const router = useRouter()
+export default function LoginSignup() {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-    const handleSubmit = async(e:React.FormEvent)=>{
-        e.preventDefault()
-        setIsLoading(true)
-        setError("")
-        const onlyNumber = phoneNumber.replace(/\D/g, "");
-        const res = await signIn("credentials", {
-            phone:onlyNumber,
-            password:password,
-            redirect:true,
-            
-        });
-        setIsLoading(false)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(""); // Clear previous error
+    const onlyNumber = phoneNumber.replace(/\D/g, "");
+    const res = await signIn("credentials", {
+      phone: onlyNumber,
+      password: password,
+      redirect: false,
+    });
+    setIsLoading(false);
 
-        if(res?.status === 201){
-            
-            toast.success("Welcome to PayEase. Your account has been created successfully");
-            router.push("/dashboard")
-        }else if(res?.status === 200){
-            toast.success("You are Successfullu logged in to your PayEase account")
-            router.push("/dashboard")
-        }else{
-            setError("Invalid phoone number or password. Please try again.")
-        }
+    if (res?.status === 201) {
+      toast.success(
+        "Welcome to FlowPay! Your account has been created successfully.",
+      );
+      router.push("/dashboard");
+    } else if (res?.status === 200) {
+      toast.success("You've successfully logged in to your FlowPay account.");
+      router.push("/dashboard");
+    } else {
+      setError("Invalid phone number or password. Please try again.");
     }
+  };
 
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">
@@ -93,21 +91,16 @@ export default function LoginSignup(){
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white flex rounded-md h-10 items-center justify-center text-sm"
             disabled={isLoading}
-            
           >
             {isLoading ? (
               "Processing..."
             ) : (
-              <div className="flex items-center" >
+              <div className="flex items-center">
                 Continue
-                
                 <ArrowRight className="ml-2 h-4 w-5" />
               </div>
-             
             )}
-            
           </button>
-         
         </form>
         <p className="mt-4 text-sm text-center text-gray-600">
           By continuing, you agree to FlowPay's Terms of Service and Privacy
@@ -115,5 +108,5 @@ export default function LoginSignup(){
         </p>
       </div>
     </div>
-    )
+  );
 }
